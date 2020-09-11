@@ -42,7 +42,7 @@ urrently, the VPN connection between the two networks is not established. Explor
 <pre><code> gcloud compute instances list </code></pre>    
       
 2. Note the external and internal IP addresses for server-2
-3. SSH to server-1
+3. **SSH** to **server-1**
 <pre><code> gcloud compute ssh server-1 --zone "us-central1-b" </code></pre>
      
 4. To test connectivity to server-2's external IP address, run the following command, replacing server-2's external IP address with the value noted earlier:
@@ -57,11 +57,11 @@ urrently, the VPN connection between the two networks is not established. Explor
     
 6. Exit the SSH terminal
 
-Let's try the same from server-
+Let's try the same from **server-2**
 
-7. Note the external and internal IP addresses for server-1
+7. Note the external and internal IP addresses for **server-1**
 
-8. SSH to server-2
+8. **SSH** to **server-2**
 <pre><code> gcloud compute ssh server-2 --zone "europe-west1-b" </code></pre>
      
 9. To test connectivity to server-1's external IP address, run the following command, replacing server-1's external IP address with the value noted earlier:
@@ -89,11 +89,9 @@ Establish private communication between the two VM instances by creating VPN gat
 Reserve two static IP addresses
 
 Reserve one static IP address for each VPN gateway.
-
 <pre><code> gcloud compute addresses create vpn-1-static-ip  --region "us-central1" </code></pre>
 
-Repeat the same for vpn-2-static-ip
-
+Repeat the same for **vpn-2-static-ip**
 <pre><code> gcloud compute addresses create vpn-2-static-ip  --region "europe-west1" </code></pre>
 
 Note both IP addresses for the next step. 
@@ -132,7 +130,7 @@ gcloud compute routes create "tunnel2to1-route-1" --network "vpn-network-2" --ne
 
 Verify server-1 to server-2 connectivity
 
-1. SSH to server-1: 
+1. **SSH** to **server-1**: 
 <pre><code> gcloud compute ssh server-1 --zone "us-central1-b" </code></pre>
 
 2. To test connectivity to server-2's internal IP address, run the following command:
@@ -140,7 +138,7 @@ Verify server-1 to server-2 connectivity
   
 3. Exit the SSH terminal
 
-4. SSH to server-2: 
+4. **SSH** to **server-2**: 
 <pre><code> gcloud compute ssh server-2 --zone "europe-west1-b" </code></pre>
      
 5. To test connectivity to server-1's internal IP address, run the following command:
@@ -151,7 +149,7 @@ Remove the external IP addresses
 Now that you verified VPN connectivity, you can remove the instances' external IP addresses. For demonstration purposes, just do this for the **server-1** instance.
 <pre><code> gcloud compute instances delete-access-config server-1 --access-config-name "External NAT" --zone "us-central1-b" </code></pre>
 
-6. Feel free to SSH to server-2 and verify that you can still ping the **server-1** instance's internal IP address
+6. Feel free to **SSH** to **server-2** and verify that you can still ping the **server-1** instance's internal IP address
 <pre><code> gcloud compute ssh server-2 --zone "europe-west1-b" </code></pre>
 <pre><code> ping -c 3 &lt;Enter server-1's internal IP address here&gt; </code></pre>
 
