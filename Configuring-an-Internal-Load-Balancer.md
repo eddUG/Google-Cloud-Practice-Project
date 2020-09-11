@@ -67,7 +67,10 @@ An instance template is an API resource that you can use to create VM instances 
 **For subnet-a:**
 <pre><code> gcloud compute instance-templates create instance-template-1 --machine-type=e2-medium --region=us-central1 --subnet=subnet-a --no-address --metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh --tags=backend-service </code></pre>
 
-<pre><code> The **startup-script-url** specifies a script that is executed when instances are started. This script installs Apache and changes the welcome page to include the client IP and the name, region, and zone of the VM instance </code></pre>
+<pre><code> 
+The **startup-script-url** specifies a script that is executed when instances are started. 
+This script installs Apache and changes the welcome page to include the client IP and the name, region, and zone of the VM instance 
+</code></pre>
 
 <pre><code>  The network tag backend-service ensures that the firewall rule to allow traffic from any sources in the 10.10.0.0/16 subnet and the Health Check firewall rule applies to these instances. </code></pre>
 
@@ -100,7 +103,9 @@ These instances are in separate zones, and their internal IP addresses are part 
 Create a utility VM to access the backends' HTTP sites:
 <pre><code> gcloud compute instances create utility-vm --zone=us-central1-f --machine-type=f1-micro --subnet=subnet-a --private-network-ip=10.10.20.50 --no-address </code></pre> 
 
-<pre><code> Note that the internal IP addresses for the backends are 10.10.20.2 and 10.10.30.2. If these IP addresses are different, replace them in the two curl commands below. </code></pre> 
+| :memo: | Note that the internal IP addresses for the backends are 10.10.20.2 and 10.10.30.2. If these IP addresses are different, replace them in the two curl commands below |
+|--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 
 **SSH** to **utility-vm:**
 <pre><code> gcloud compute ssh utility-vm --zone "us-central1-f" </code></pre> 
