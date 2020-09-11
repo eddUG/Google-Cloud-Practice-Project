@@ -67,12 +67,12 @@ An instance template is an API resource that you can use to create VM instances 
 **For subnet-a:**
 <pre><code> gcloud compute instance-templates create instance-template-1 --machine-type=e2-medium --region=us-central1 --subnet=subnet-a --no-address --metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh --tags=backend-service </code></pre>
 
-<pre><code> 
-The **startup-script-url** specifies a script that is executed when instances are started. 
-This script installs Apache and changes the welcome page to include the client IP and the name, region, and zone of the VM instance 
-</code></pre>
 
-<pre><code>  The network tag backend-service ensures that the firewall rule to allow traffic from any sources in the 10.10.0.0/16 subnet and the Health Check firewall rule applies to these instances. </code></pre>
+**The startup-script-url specifies a script that is executed when instances are started. This script installs Apache and changes the welcome page to include the client IP and the name, region, and zone of the VM instance**
+
+| :memo: | The network tag backend-service ensures that the firewall rule to allow traffic from any sources in the 10.10.0.0/16 subnet and the Health Check firewall rule applies to these instances. |
+|--------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 
 **For subnet-b:**
 <pre><code> gcloud compute instance-templates create instance-template-2 --machine-type=e2-medium --region=us-central1 --subnet=subnet-b --no-address --metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh --tags=backend-service </code></pre>
@@ -84,7 +84,7 @@ Create a managed instance group in **subnet-a** (us-central1-a) and **subnet-b**
 <pre><code> gcloud compute instance-groups managed create instance-group-1 --base-instance-name=instance-group-1 --template=instance-template-1 --size=1 --zone=us-central1-a  </code></pre>
 <pre><code> gcloud compute instance-groups managed set-autoscaling "instance-group-1" --zone "us-central1-a" --target-cpu-utilization "0.8" --cool-down-period "45" --min-num-replicas "1" --max-num-replicas "5" --mode "on" </code></pre>
 
-<pre><code> Managed instance groups offer autoscaling capabilities that allow you to automatically add or remove instances from a managed instance group based on increases or decreases in load. Autoscaling helps your applications gracefully handle increases in traffic and reduces cost when the need for resources is lower. Just define the autoscaling policy, and the autoscaler performs automatic scaling based on the measured load. </code></pre>
+**Managed instance groups offer autoscaling capabilities that allow you to automatically add or remove instances from a managed instance group based on increases or decreases in load. Autoscaling helps your applications gracefully handle increases in traffic and reduces cost when the need for resources is lower. Just define the autoscaling policy, and the autoscaler performs automatic scaling based on the measured load.**
 
 Repeat the same procedure for instance-group-2 in us-central1-b:
 
