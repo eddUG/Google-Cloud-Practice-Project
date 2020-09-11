@@ -1,6 +1,6 @@
 # Qwiklabs Completion Status
 
-This is intended to show evidence of my completion of 14 selected hands-on labs on Qwiklabs, submitting proof of such per screenshot based on the email received
+This section is intended to show evidence of my completion of 14 selected hands-on labs on Qwiklabs, submitting proof of such per screenshot based on the email received
 
 **Lab: Virtual Private Networks (VPN)**
 ![alt text](https://github.com/eddUG/Google-Cloud-Practice-Project/blob/master/images/Qwiklabs-VPN.PNG)
