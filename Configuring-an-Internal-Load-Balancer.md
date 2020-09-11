@@ -107,17 +107,9 @@ Create a utility VM to access the backends' HTTP sites:
 
 To verify the welcome page for instance-group-1-xxxx, run the following command:
 <pre><code> curl 10.10.20.2 </code></pre> 
-
-The output should look like this (do not copy; this is example output):
-<pre><code> <h1>Internal Load Balancing Lab</h1><h2>Client IP</h2>Your IP address : 10.10.20.50<h2>Hostname</h2>Server Hostname:
- instance-group-1-1zn8<h2>Server Location</h2>Region and Zone: us-central1-a </code></pre>
  
 To verify the welcome page for instance-group-2-xxxx, run the following command:
 <pre><code> curl 10.10.30.2 </code></pre>
-
-The output should look like this (do not copy; this is example output):
-<pre><code> <h1>Internal Load Balancing Lab</h1><h2>Client IP</h2>Your IP address : 10.10.20.50<h2>Hostname</h2>Server Hostname:
- instance-group-2-q5wp<h2>Server Location</h2>Region and Zone: us-central1-b </code></pre>
  
 Exit the SSH terminal
 
@@ -159,25 +151,20 @@ Verify that the *my-ilb* IP address forwards traffic to **instance-group-1** in 
 
 2. To verify that the internal load balancer forwards traffic, run the following command:
 <pre><code> curl 10.10.30.5 </code></pre>
-
-The output should look like this (do not copy; this is example output):
-
-<pre><code> <h1>Internal Load Balancing Lab</h1><h2>Client IP</h2>Your IP address : 10.10.20.50<h2>Hostname</h2>Server Hostname:
- instance-group-1-1zn8<h2>Server Location</h2>Region and Zone: us-central1-a </code></pre>
  
 <pre><code> As expected, traffic is forwarded from the internal load balancer (10.10.30.5) to the backend </code></pre>
 
 3. Run the same command a couple of times:
 <pre><code> curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
-            curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
+curl 10.10.30.5
 </code></pre>
 
 You should be able to see responses from **instance-group-1** in us-central1-a and **instance-group-2** in us-central1-b. If not, run the command again
@@ -186,14 +173,4 @@ You should be able to see responses from **instance-group-1** in us-central1-a a
 ## Task 6. Review
 
 In this lab, you created two managed instance groups in the us-central1 region and a firewall rule to allow HTTP traffic to those instances and TCP traffic from the Google Cloud health checker. Then you configured and tested an internal load balancer for those instance groups.
- 
-
-
-
-
-
-
-  
-
-
  
