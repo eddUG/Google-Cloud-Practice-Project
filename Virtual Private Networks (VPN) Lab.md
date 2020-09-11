@@ -1,17 +1,15 @@
 
-#Virtual Private Networks (VPN)
+# Virtual Private Networks (VPN)
 
-Overview
+### Overview
 In this lab, you establish VPN tunnels between two networks in separate regions such that a VM in one network can ping a VM in the other network over its internal IP address.
 
-Objectives
+### Objectives
 In this lab, you learn how to perform the following tasks:
 
-Create VPN gateways in each network
-
-Create VPN tunnels between the gateways
-
-Verify VPN connectivity
+* Create VPN gateways in each network
+* Create VPN tunnels between the gateways
+* Verify VPN connectivity
 
 
 Task 1: Explore the networks and instances
