@@ -125,9 +125,13 @@ Configure the internal load balancer to balance traffic between the two backends
 2. Define the backend service with the **gcloud compute backend-services create** command.
 <pre><code> gcloud compute backend-services create my-ilb-backend-service  --load-balancing-scheme=internal --protocol=TCP --health-checks=my-ilb-health-check --region=us-central1 </code></pre>
 
-<pre><code> Defining **--load-balancing-scheme=internal** makes this load balancer internal. This choice requires the backends to be in a single region (us-central1) and does not allow offloading TCP processing to the load balancer </code></pre>
+<pre><code> 
+Defining **--load-balancing-scheme=internal** makes this load balancer internal. 
+This choice requires the backends to be in a single region (us-central1) and does not allow offloading TCP processing to the load balancer </code></pre>
 
-<pre><code> Health checks determine which instances can receive new connections. This HTTP health check polls instances every 5 seconds, waits up to 5 seconds for a response, and treats 2 successful or 2 failed attempts as healthy or unhealthy, respectively. </code></pre>
+<pre><code> 
+Health checks determine which instances can receive new connections. 
+This HTTP health check polls instances every 5 seconds, waits up to 5 seconds for a response, and treats 2 successful or 2 failed attempts as healthy or unhealthy, respectively. </code></pre>
 
 3. Add backends to the backend service with the **gcloud compute backend-services add-backend** command.
 <pre><code> gcloud compute backend-services add-backend my-ilb-backend-service --instance-group=instance-group-1 --instance-group-zone=us-central1-a --region=us-central1 </code></pre>
