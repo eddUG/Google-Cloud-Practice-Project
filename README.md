@@ -25,5 +25,5 @@ Finally, repo shows how to use ☁️Google Cloud Platform Cloud Shell to:
 ![alt text](https://github.com/eddUG/Google-Cloud-Practice-Project/blob/master/images/load.balancer.png)
 
 
-
+##
 This repo is a work in progress, intend to translate tens of labs from Console instructions to 100% command line instructions. Wish me luck 
