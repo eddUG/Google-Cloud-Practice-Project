@@ -155,7 +155,8 @@ Verify that the *my-ilb* IP address forwards traffic to **instance-group-1** in 
 <pre><code> As expected, traffic is forwarded from the internal load balancer (10.10.30.5) to the backend </code></pre>
 
 3. Run the same command a couple of times:
-<pre><code> curl 10.10.30.5
+<pre><code> 
+curl 10.10.30.5
 curl 10.10.30.5
 curl 10.10.30.5
 curl 10.10.30.5
