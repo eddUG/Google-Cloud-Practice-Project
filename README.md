@@ -23,3 +23,7 @@ Finally, repo shows how to use ☁️Google Cloud Platform Cloud Shell to:
 <br><br>
 **Configure and test an internal load balancer with two managed instances groups as the backends, as shown in this network diagram:** This Lab is titled [Configuring an Internal Load Balancer](https://github.com/eddUG/Google-Cloud-Practice-Project/blob/master/Configuring-an-Internal-Load-Balancer.md)
 ![alt text](https://github.com/eddUG/Google-Cloud-Practice-Project/blob/master/images/load.balancer.png)
+
+
+
+This repo is a work in progress, intend to translate tens of labs from Console instructions to 100% command line instructions. Wish me luck 
