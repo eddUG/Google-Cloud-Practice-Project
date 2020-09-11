@@ -17,7 +17,7 @@ Two custom networks with VM instances have been configured for you. For the purp
 
 Explore the networks
 
-Verify that vpn-network-1 and vpn-network-2 have been created with subnets in separate regions.
+Verify that **vpn-network-1** and **vpn-network-2** have been created with subnets in separate regions.
 
     gcloud compute networks subnets list
 
