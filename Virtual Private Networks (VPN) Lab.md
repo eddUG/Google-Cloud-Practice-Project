@@ -1,10 +1,10 @@
 
 # Virtual Private Networks (VPN)
 
-### Overview
+## Overview
 In this lab, you establish VPN tunnels between two networks in separate regions such that a VM in one network can ping a VM in the other network over its internal IP address.
 
-### Objectives
+## Objectives
 In this lab, you learn how to perform the following tasks:
 
 * Create VPN gateways in each network
@@ -12,10 +12,10 @@ In this lab, you learn how to perform the following tasks:
 * Verify VPN connectivity
 
 
-### Task 1: Explore the networks and instances
+## Task 1: Explore the networks and instances
 Two custom networks with VM instances have been configured for you. For the purposes of the lab, both networks are VPC networks within a Google Cloud project. However, in a real-world application, one of these networks might be in a different Google Cloud project, on-premises, or in a different cloud.
 
-Explore the networks
+### Explore the networks 
 
 Verify that **vpn-network-1** and **vpn-network-2** have been created with subnets in separate regions.
 
@@ -25,7 +25,7 @@ Verify that **vpn-network-1** and **vpn-network-2** have been created with subne
 * Note the **vpn-network-2** network and its **subnet-b** in **europe-west1**.
 
 
-Explore the firewall rules
+### Explore the firewall rules
 
 <pre><code>  gcloud compute firewall-rules list </code></pre>
 
@@ -34,11 +34,10 @@ Explore the firewall rules
 
 These firewall rules allow **SSH** and **ICMP** traffic from anywhere.
 
-Explore the instances and their connectivity
+### Explore the instances and their connectivity
 
-urrently, the VPN connection between the two networks is not established. Explore the connectivity options between the instances in the networks
-1. List instance
-    
+Currently, the VPN connection between the two networks is not established. Explore the connectivity options between the instances in the networks
+1. List instance   
 <pre><code> gcloud compute instances list </code></pre>    
       
 2. Note the external and internal IP addresses for server-2
@@ -73,7 +72,6 @@ Let's try the same from **server-2**
     You should see similar results.
   
 11. Exit the SSH terminal
-
 <pre><code> 
 Why are we testing both **server-1** to **server-2** and **server-2** to **server-1**?
 
@@ -82,11 +80,11 @@ For the purposes of this lab, the path from subnet-a to subnet-b is not the same
 This makes it much easier to debug the lab during class. In practice, a single tunnel could be used with symmetric configuration. However, it is more common to have multiple tunnels or multiple gateways and VPNs for production work, because a single tunnel could be a single point of failure.</code></pre>
 
 
-### Task 2: Create the VPN gateways and tunnels
+## Task 2: Create the VPN gateways and tunnels
 
 Establish private communication between the two VM instances by creating VPN gateways and tunnels between the two networks
 
-Reserve two static IP addresses
+### Reserve two static IP addresses
 
 Reserve one static IP address for each VPN gateway.
 <pre><code> gcloud compute addresses create vpn-1-static-ip  --region "us-central1" </code></pre>
@@ -96,7 +94,7 @@ Repeat the same for **vpn-2-static-ip**
 
 Note both IP addresses for the next step. 
 
-Create the vpn-1 gateway and tunnel1to2
+### Create the vpn-1 gateway and tunnel1to2
 <pre><code>
 gcloud compute target-vpn-gateways create "vpn-1" --region "us-central1" --network "vpn-network-1"
 
@@ -111,7 +109,7 @@ gcloud compute vpn-tunnels create "tunnel1to2" --region "us-central1" --peer-add
 gcloud compute routes create "tunnel1to2-route-1" --network "vpn-network-1" --next-hop-vpn-tunnel "tunnel1to2" --next-hop-vpn-tunnel-region "us-central1" --destination-range "10.1.3.0/24"
 </code></pre>
 
-Create the vpn-2 gateway and tunnel2to1
+### Create the vpn-2 gateway and tunnel2to1
 <pre><code>
 gcloud compute target-vpn-gateways create "vpn-2" --region "europe-west1" --network "vpn-network-2"
 
@@ -126,7 +124,7 @@ gcloud compute vpn-tunnels create "tunnel2to1" --region "europe-west1" --peer-ad
 gcloud compute routes create "tunnel2to1-route-1" --network "vpn-network-2" --next-hop-vpn-tunnel "tunnel2to1" --next-hop-vpn-tunnel-region "europe-west1" --destination-range "10.5.4.0/24"
 </code></pre>
 
-### Task 3: Verify VPN connectivity
+## Task 3: Verify VPN connectivity
 
 Verify server-1 to server-2 connectivity
 
@@ -144,7 +142,7 @@ Verify server-1 to server-2 connectivity
 5. To test connectivity to server-1's internal IP address, run the following command:
 <pre><code> ping -c 3 &lt;Enter server-1's internal IP address here&gt; </code></pre>
   
-Remove the external IP addresses
+### Remove the external IP addresses
 
 Now that you verified VPN connectivity, you can remove the instances' external IP addresses. For demonstration purposes, just do this for the **server-1** instance.
 <pre><code> gcloud compute instances delete-access-config server-1 --access-config-name "External NAT" --zone "us-central1-b" </code></pre>
@@ -153,7 +151,7 @@ Now that you verified VPN connectivity, you can remove the instances' external I
 <pre><code> gcloud compute ssh server-2 --zone "europe-west1-b" </code></pre>
 <pre><code> ping -c 3 &lt;Enter server-1's internal IP address here&gt; </code></pre>
 
-### Task 4: Review
+## Task 4: Review
 In this lab, you configured a VPN connection between two networks with subnets in different regions. Then you verified the VPN connection by pinging VMs in different networks using their internal IP addresses.
 
 You configured the VPN gateways and tunnels using the Cloud Shell. 
